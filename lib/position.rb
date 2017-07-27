@@ -20,4 +20,13 @@ class Position
   def possible_moves
     @board.map.with_index { |p,i| i if p == "-" }.compact
   end
+
+  def win?(x)
+    rows = @board.each_slice(DIM).to_a
+    rows.any? { |row| row.all? { |p| p == turn } } || 
+    rows.transpose.any? { |row| row.all? { |p| p == turn }} ||
+    rows.map.with_index.all? { |row, i| row[i] == turn } ||
+    rows.map.with_index.all? { |row, i| row[DIM - i -1] == turn } 
+    
+  end
 end
