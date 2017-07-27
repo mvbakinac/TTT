@@ -15,7 +15,8 @@ describe Position do
     its(:turn)  { should == "o" }
   end
   context "#possible_moves" do
-
+    subject { Position.new.move(0).move(1) }
+    its(:possible_moves) { should == [2,3,4,5,6,7,8] }
     
   end
   

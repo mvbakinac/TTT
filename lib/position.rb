@@ -14,7 +14,10 @@ class Position
   end
   
   def xturn(x, o)
-       turn == "x" ? x : o
-
+    turn == "x" ? x : o
+  end
+  
+  def possible_moves
+    @board.map.with_index { |p,i| i if p == "-" }.compact
   end
 end
